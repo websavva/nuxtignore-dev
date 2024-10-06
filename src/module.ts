@@ -1,41 +1,47 @@
-import {
-  defineNuxtModule,
-  createResolver,
-  addPluginTemplate,
-  addTypeTemplate,
-} from '@nuxt/kit';
+import { join, isAbsolute } from 'node:path';
+import { existsSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
+
+import { defineNuxtModule } from '@nuxt/kit';
 
 export interface ModuleOptions {
-  globalName?: string;
-  order?: number;
+  filePath: string;
+  isEnabled: boolean;
 }
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'exposedNuxt',
-    configKey: 'exposedNuxt',
+    name: 'nuxtignore-dev',
+    configKey: 'nuxtignoreDev',
   },
-  defaults: {
-    globalName: '$nuxt',
-  },
-  setup({ order, globalName }) {
-    const templateOptions = {
-      globalName,
+  defaults(nuxt) {
+    return {
+      filePath: './.nuxtignore.dev',
+      isEnabled: nuxt.options.dev,
     };
+  },
 
-    const resolver = createResolver(import.meta.url);
+  async setup({ filePath }, nuxt) {
+    const fullFilePath = isAbsolute(filePath)
+      ? filePath
+      : join(nuxt.options.rootDir, filePath);
 
-    addPluginTemplate({
-      src: resolver.resolve('./runtime/plugin.mjs'),
-      mode: 'client',
-      options: templateOptions,
-      order,
-    });
+    if (!existsSync(fullFilePath))
+      throw new Error(
+        `[nuxtignore-dev]: File path "${fullFilePath}" does not exist !`,
+      );
 
-    addTypeTemplate({
-      src: resolver.resolve('./runtime/types.d.ts'),
-      filename: 'exposed-nuxt.d.ts',
-      options: templateOptions,
-    });
+    const fileContent = await readFile(fullFilePath, 'utf-8');
+
+    const devIgnoredPatterns = fileContent
+      .trim()
+      .split(/\r?\n/)
+      .filter(Boolean)
+      .filter((pattern) => !pattern.startsWith('#'));
+
+    nuxt.options.ignore = [
+      ...(nuxt.options.ignore || []),
+      ...devIgnoredPatterns,
+    ];
   },
 });
