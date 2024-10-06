@@ -36,11 +36,9 @@
     "dev:prepare": "nuxt-module-build build --stub && pnpm run prepare && nuxi prepare playground",
     "dev:build": "nuxi build playground",
     "dev": "nuxi dev playground",
-    "release": "npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "lint:fix": "prettier --write . && eslint . --fix",
-    "test": "vitest run",
-    "test:watch": "vitest watch"
+    "test": "vitest run"
   },
   "dependencies": {
     "@nuxt/kit": "^3.13.2"
