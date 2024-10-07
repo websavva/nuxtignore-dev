@@ -6,18 +6,22 @@ import { setup, $fetch } from '@nuxt/test-utils';
 await setup({
   server: true,
   browser: false,
-  rootDir: fileURLToPath(new URL('./fixtures/basic', import.meta.url)),
-  dev: true,
+  rootDir: fileURLToPath(new URL('../fixtures/basic', import.meta.url)),
+  nuxtConfig: {
+    // @ts-expect-error
+    nuxtignoreDev: {
+      enabled: false,
+    },
+  },
 });
 
 describe('Basic project', () => {
   it('should ignore pages', async () => {
     expect(await $fetch('/')).toContain('<h1>Home Page</h1>');
-
-    expect($fetch('/ignored')).rejects.toHaveProperty('data.statusCode', 404);
+    expect(await $fetch('/ignored')).toContain('<h1>Ignored Page</h1>');
   });
 
-  it('should ignore layouts', async () => {
+  it('should not ignore layouts', async () => {
     const activePageContent = await $fetch('/with-active-layout');
 
     expect(activePageContent).toContain('id="active-layout"');
@@ -25,24 +29,24 @@ describe('Basic project', () => {
 
     const ignoredPageContent = await $fetch('/with-ignored-layout');
 
-    expect(ignoredPageContent).not.toContain('id="ignored-layout"');
+    expect(ignoredPageContent).toContain('id="ignored-layout"');
     expect(ignoredPageContent).toContain('<h1>With Ignored Layout</h1>');
   });
 
-  it('should ignore components', async () => {
+  it('should not ignore components', async () => {
     const componentsPageContent = await $fetch('/components');
 
     expect(componentsPageContent).toContain('id="active-component');
-    expect(componentsPageContent).not.toContain('id="ignored-component"');
+    expect(componentsPageContent).toContain('id="ignored-component"');
   });
 
-  it('should ignore auto imports', async () => {
+  it('should not ignore auto imports', async () => {
     const autoImportsPageContent = await $fetch('/auto-imports');
 
     expect(autoImportsPageContent).toContain('useActive=function');
-    expect(autoImportsPageContent).toContain('useIgnored=undefined');
+    expect(autoImportsPageContent).toContain('useIgnored=function');
 
     expect(autoImportsPageContent).toContain('activeUtil=function');
-    expect(autoImportsPageContent).toContain('ignoredUtil=undefined');
+    expect(autoImportsPageContent).toContain('ignoredUtil=function');
   });
 });

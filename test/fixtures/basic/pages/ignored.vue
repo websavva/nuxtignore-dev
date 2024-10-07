@@ -1,5 +1,3 @@
 <template>
-  <h1>
-    Ignored page
-  </h1>
+  <h1>Ignored Page</h1>
 </template>
