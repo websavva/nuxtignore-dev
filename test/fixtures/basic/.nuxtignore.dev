@@ -3,3 +3,7 @@ pages/ignored.vue
 layouts/ignored.vue
 
 components/IgnoredComponent.vue
+
+composables/use-ignored.ts
+
+utils/ignored-util.ts

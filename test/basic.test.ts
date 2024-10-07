@@ -34,4 +34,14 @@ describe('Basic project', () => {
     expect(componentsPageContent).toContain('id="active-component');
     expect(componentsPageContent).not.toContain('id="ignored-component"');
   });
+
+  it('should ignore auto imports', async () => {
+    const autoImportsPageContent = await $fetch('/auto-imports');
+
+    expect(autoImportsPageContent).toContain('useActive=function');
+    expect(autoImportsPageContent).toContain('useIgnored=undefined');
+
+    expect(autoImportsPageContent).toContain('activeUtil=function');
+    expect(autoImportsPageContent).toContain('ignoredUtil=undefined');
+  });
 });
