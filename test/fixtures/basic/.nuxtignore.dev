@@ -1,2 +1,5 @@
 pages/ignored.vue
+
 layouts/ignored.vue
+
+components/IgnoredComponent.vue

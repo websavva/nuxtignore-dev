@@ -27,4 +27,11 @@ describe('Basic project', () => {
     expect(ignoredPageContent).not.toContain('id="ignored-layout"');
     expect(ignoredPageContent).toContain('<h1>With Ignored Layout</h1>');
   });
+
+  it('should ignore components', async () => {
+    const componentsPageContent = await $fetch('/components');
+
+    expect(componentsPageContent).toContain('id="active-component');
+    expect(componentsPageContent).not.toContain('id="ignored-component"');
+  });
 });
