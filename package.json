@@ -19,16 +19,9 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=nuxtignore-dev-playground dev",
-    "lint": "eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix"
+    "lint:fix": "prettier --write . && eslint --fix ."
   },
   "devDependencies": {
-    "@types/node": "^22.7.4",
-    "@nuxt/eslint-config": "^0.5.7",
-    "eslint": "^9.12.0",
-    "nuxt": "^3.13.2",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.3"
+    "@types/node": "^22.7.4"
   }
 }

@@ -34,15 +34,23 @@
     "build": "pnpm run prepare && nuxt-module-build build",
     "prepack": "pnpm run build",
     "dev:prepare": "nuxt-module-build build --stub && pnpm run prepare",
-    "dev": "nuxi dev playground"
+    "dev": "nuxi dev playground",
+    "lint": "eslint .",
+    "typecheck": "nuxi typecheck"
   },
   "dependencies": {
     "@nuxt/kit": "^3.13.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/eslint": "^0.5.7",
     "@nuxt/module-builder": "^0.8.4",
     "@nuxt/schema": "^3.13.2",
-    "nuxt": "^3.13.2"
+    "eslint": "^8.57.0",
+    "nuxt": "^3.13.2",
+    "typescript": "^5.6.2",
+    "mlly": "^1.7.2",
+    "prettier": "^3.3.3",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-config-prettier": "^9.1.0"
   }
 }
