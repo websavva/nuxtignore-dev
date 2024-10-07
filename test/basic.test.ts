@@ -10,9 +10,21 @@ await setup({
 });
 
 describe('Basic project', () => {
-  it('Should ignore pages', async () => {
+  it('should ignore pages', async () => {
     expect(await $fetch('/')).toContain('<h1>Home Page</h1>');
 
-    expect($fetch('/ignored')).rejects.toHaveProperty('data.statusCode', 404)
+    expect($fetch('/ignored')).rejects.toHaveProperty('data.statusCode', 404);
+  });
+
+  it('should ignore layouts', async () => {
+    const activePageContent = await $fetch('/with-active-layout');
+
+    expect(activePageContent).toContain('id="active-layout"');
+    expect(activePageContent).toContain('<h1>With Active Layout</h1>');
+
+    const ignoredPageContent = await $fetch('/with-ignored-layout');
+
+    expect(ignoredPageContent).not.toContain('id="ignored-layout"');
+    expect(ignoredPageContent).toContain('<h1>With Ignored Layout</h1>');
   });
 });

@@ -1,5 +1,5 @@
 {
-  "name": "nuxtignore-dev-test-basic",
+  "name": "test-basic",
   "version": "0.0.1",
   "description": "",
   "engines": {
@@ -7,6 +7,9 @@
     "pnpm": "9.x"
   },
   "type": "module",
+  "scripts": {
+    "prepare": "nuxi prepare"
+  },
   "devDependencies": {
     "nuxt": "^3.13.2",
     "nuxtignore-dev": "workspace:*"
