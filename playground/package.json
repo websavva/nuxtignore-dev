@@ -1,7 +1,8 @@
 {
-  "name": "nuxtignore-dev-playground",
+  "name": "playground",
   "version": "0.0.1",
   "description": "",
+  "private": true,
   "engines": {
     "node": "20.x",
     "pnpm": "9.x"

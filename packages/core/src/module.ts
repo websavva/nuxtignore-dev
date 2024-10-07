@@ -3,10 +3,12 @@ import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 
 import { defineNuxtModule } from '@nuxt/kit';
+import { strict } from 'node:assert';
 
 export interface ModuleOptions {
   filePath: string;
-  isEnabled: boolean;
+  enabled: boolean;
+  strict: boolean;
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -17,19 +19,26 @@ export default defineNuxtModule<ModuleOptions>({
   defaults(nuxt) {
     return {
       filePath: './.nuxtignore.dev',
-      isEnabled: nuxt.options.dev,
+      enabled: nuxt.options.dev,
+      strict: false,
     };
   },
 
-  async setup({ filePath }, nuxt) {
+  async setup({ filePath, strict, enabled }, nuxt) {
+    if (!enabled) return;
+
     const absoluteNuxtignoreDevFilePath = isAbsolute(filePath)
       ? filePath
       : join(nuxt.options.rootDir, filePath);
 
-    if (!existsSync(absoluteNuxtignoreDevFilePath))
-      throw new Error(
-        `[nuxtignore-dev]: File path "${absoluteNuxtignoreDevFilePath}" does not exist !`,
-      );
+    if (!existsSync(absoluteNuxtignoreDevFilePath)) {
+      if (strict)
+        throw new Error(
+          `[nuxtignore-dev]: File path "${absoluteNuxtignoreDevFilePath}" does not exist !`,
+        );
+
+      return;
+    }
 
     nuxt.options.watch.push(absoluteNuxtignoreDevFilePath);
 

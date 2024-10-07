@@ -1,0 +1,14 @@
+{
+  "name": "nuxtignore-dev-test-basic",
+  "version": "0.0.1",
+  "description": "",
+  "engines": {
+    "node": "20.x",
+    "pnpm": "9.x"
+  },
+  "type": "module",
+  "devDependencies": {
+    "nuxt": "^3.13.2",
+    "nuxtignore-dev": "workspace:*"
+  }
+}
