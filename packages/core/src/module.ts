@@ -22,16 +22,18 @@ export default defineNuxtModule<ModuleOptions>({
   },
 
   async setup({ filePath }, nuxt) {
-    const fullFilePath = isAbsolute(filePath)
-      ? filePath
-      : join(nuxt.options.rootDir, filePath);
+    const absoluteNuxtignoreDevFilePath = isAbsolute(filePath)
+    ? filePath
+    : join(nuxt.options.rootDir, filePath);
 
-    if (!existsSync(fullFilePath))
+    if (!existsSync(absoluteNuxtignoreDevFilePath))
       throw new Error(
-        `[nuxtignore-dev]: File path "${fullFilePath}" does not exist !`,
-      );
+    `[nuxtignore-dev]: File path "${absoluteNuxtignoreDevFilePath}" does not exist !`,
+  );
 
-    const fileContent = await readFile(fullFilePath, 'utf-8');
+  nuxt.options.watch.push(absoluteNuxtignoreDevFilePath);
+
+  const fileContent = await readFile(absoluteNuxtignoreDevFilePath, 'utf-8');
 
     const devIgnoredPatterns = fileContent
       .trim()

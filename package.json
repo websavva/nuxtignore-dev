@@ -1,6 +1,6 @@
 {
-  "name": "nuxtignore-dev",
-  "version": "1.2.2",
+  "name": "nuxtignore-dev-module",
+  "version": "0.0.1",
   "description": "Nuxt module for support of .nuxtignore.dev file",
   "keywords": [
     "nuxt",
@@ -17,44 +17,16 @@
     "pnpm": "9.x"
   },
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
-  },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "prepare": "nuxt-module-build prepare",
-    "build": "pnpm run prepare && nuxt-module-build build",
-    "prepack": "pnpm run build",
-    "dev:prepare": "nuxt-module-build build --stub && pnpm run prepare && nuxi prepare playground",
-    "dev:build": "nuxi build playground",
-    "dev": "nuxi dev playground",
+    "dev": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=nuxtignore-dev-playground dev",
     "lint": "eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix",
-    "test": "vitest run"
-  },
-  "dependencies": {
-    "@nuxt/kit": "^3.13.2"
+    "lint:fix": "prettier --write . && eslint . --fix"
   },
   "devDependencies": {
     "@types/node": "^22.7.4",
-    "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.5.7",
-    "@nuxt/module-builder": "^0.8.4",
-    "@nuxt/schema": "^3.13.2",
-    "@nuxt/test-utils": "^3.14.2",
-    "changelogen": "^0.5.7",
     "eslint": "^9.12.0",
     "nuxt": "^3.13.2",
-    "vitest": "^2.1.2",
-    "@playwright/test": "^1.47.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3"

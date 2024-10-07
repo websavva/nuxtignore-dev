@@ -1,6 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
-import NuxtignoreDevModule from 'nuxtignore-dev';
+import NuxtignoreDevModule from '../src/module';
 
 export default defineNuxtConfig({
   modules: [NuxtignoreDevModule],

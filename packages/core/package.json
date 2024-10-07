@@ -1,0 +1,48 @@
+{
+  "name": "nuxtignore-dev",
+  "version": "0.0.1",
+  "description": "Nuxt module for support of .nuxtignore.dev file",
+  "keywords": [
+    "nuxt",
+    "module"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/websavva/nuxtignore-dev.git"
+  },
+  "license": "MIT",
+  "author": "websavva",
+  "engines": {
+    "node": "20.x",
+    "pnpm": "9.x"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "nuxt-module-build prepare",
+    "build": "pnpm run prepare && nuxt-module-build build",
+    "prepack": "pnpm run build",
+    "dev:prepare": "nuxt-module-build build --stub && pnpm run prepare",
+    "dev": "nuxi dev playground"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.13.2"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/schema": "^3.13.2",
+    "nuxt": "^3.13.2"
+  }
+}
