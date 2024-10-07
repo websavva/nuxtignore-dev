@@ -1,5 +1,4 @@
 dist
 node_modules
-src/runtime
 .nuxt
 pnpm-lock.yaml
