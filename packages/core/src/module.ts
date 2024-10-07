@@ -3,7 +3,6 @@ import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 
 import { defineNuxtModule } from '@nuxt/kit';
-import { strict } from 'node:assert';
 
 export interface ModuleOptions {
   filePath: string;
