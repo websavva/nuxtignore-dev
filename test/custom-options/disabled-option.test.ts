@@ -15,8 +15,8 @@ await setup({
   },
 });
 
-describe('Basic project', () => {
-  it('should ignore pages', async () => {
+describe('Disable option', () => {
+  it('should not ignore pages', async () => {
     expect(await $fetch('/')).toContain('<h1>Home Page</h1>');
     expect(await $fetch('/ignored')).toContain('<h1>Ignored Page</h1>');
   });
