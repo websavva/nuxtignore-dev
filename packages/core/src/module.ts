@@ -2,8 +2,9 @@ import { join, isAbsolute } from 'node:path';
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 
-import type { NuxtPage } from '@nuxt/schema';
-import { defineNuxtModule, isIgnored } from '@nuxt/kit';
+import { defineNuxtModule, isNuxt2 } from '@nuxt/kit';
+
+import { type Nuxt2Page, removeIgnoredPages } from './utils';
 
 export interface ModuleOptions {
   filePath: string;
@@ -58,33 +59,43 @@ export default defineNuxtModule<ModuleOptions>({
     ];
 
     if (isPagesExtendHookIncluded) {
-      nuxt.hooks.afterEach(({ name, args }) => {
-        if (name === 'pages:extend') {
-          const [rootPages] = args;
-
-          const findIgnoredPageIndex = (pages: NuxtPage[]) => {
-            return pages.findIndex(({ file }) => {
-              return file && isIgnored(file);
-            });
+      if (isNuxt2()) {
+        // wrapping extendRoutes function in order to apply ignored patterns
+        // @ts-expect-error non-existring hooks for nuxt3
+        nuxt.hook('build:extendRoutes', () => {
+          const optionsWithRouter = nuxt.options as unknown as {
+            router?: {
+              extendRoutes: (
+                pages: Nuxt2Page[],
+                router: unknown,
+              ) => Nuxt2Page[] | undefined;
+            };
           };
 
-          const removeIgnoredPages = (pages: NuxtPage[]) => {
-            let ignoredPageIndex: number;
+          const { extendRoutes: originalExtendRoutes } =
+            optionsWithRouter.router || {};
 
-            while (~(ignoredPageIndex = findIgnoredPageIndex(pages))) {
-              pages.splice(ignoredPageIndex, 1);
-            }
+          optionsWithRouter.router!.extendRoutes = (
+            pages: Nuxt2Page[],
+            router: unknown,
+          ) => {
+            const extendedPages =
+              originalExtendRoutes?.(pages, router) || pages;
 
-            pages.forEach((page) => {
-              if (page.children) {
-                removeIgnoredPages(page.children);
-              }
-            });
+            if (extendedPages) removeIgnoredPages(extendedPages);
+
+            return extendedPages;
           };
+        });
+      } else {
+        nuxt.hooks.afterEach(({ name, args }) => {
+          if (name === 'pages:extend') {
+            const [rootPages] = args;
 
-          removeIgnoredPages(rootPages);
-        }
-      });
+            removeIgnoredPages(rootPages);
+          }
+        });
+      }
     }
   },
 });

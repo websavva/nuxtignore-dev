@@ -5,6 +5,8 @@ import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
   modules: ['nuxtignore-dev'],
 
+  telemetry: false,
+
   hooks: {
     'pages:extend'(pages) {
       const { resolve } = createResolver(import.meta.url);

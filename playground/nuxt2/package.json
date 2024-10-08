@@ -1,0 +1,26 @@
+{
+  "name": "playground-nuxt2",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "engines": {
+    "node": "20.x",
+    "pnpm": "9.x"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "lint": "prettier --check . && eslint .",
+    "lint:fix": "prettier --write . && eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "@nuxt/types": "^2.18.1",
+    "nuxt": "^2.18.1",
+    "nuxtignore-dev": "workspace:*",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-config-prettier": "^9.1.0",
+    "@types/node": "^22.7.5"
+  }
+}

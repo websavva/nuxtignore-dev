@@ -18,7 +18,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=playground dev",
-    "lint:fix": "prettier --write . && eslint --fix ."
+    "dev:nuxt3": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=playground-nuxt3 dev",
+    "dev:nuxt2": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=playground-nuxt2 dev"
   }
 }
