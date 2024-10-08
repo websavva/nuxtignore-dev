@@ -1,5 +1,5 @@
 packages:
   - 'packages/*'
-  - 'test'
   - 'playground/*'
-  - 'test/fixtures/*'
+  - 'test/nuxt3'
+  - 'test/nuxt3/fixtures/*'
