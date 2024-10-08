@@ -45,4 +45,19 @@ describe('Basic project', () => {
     expect(autoImportsPageContent).toContain('activeUtil=function');
     expect(autoImportsPageContent).toContain('ignoredUtil=undefined');
   });
+
+  it('should ignore extended pages', async () => {
+    expect(await $fetch('/extended/active')).toContain(
+      '<h1>Active Extended Page</h1>',
+    );
+
+    expect($fetch('/extended/ignored')).rejects.toHaveProperty(
+      'data.statusCode',
+      404,
+    );
+    expect($fetch('/extended/active/child')).rejects.toHaveProperty(
+      'data.statusCode',
+      404,
+    );
+  });
 });

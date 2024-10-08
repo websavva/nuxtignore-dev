@@ -8,7 +8,8 @@
   },
   "type": "module",
   "scripts": {
-    "prepare": "nuxi prepare"
+    "prepare": "nuxi prepare",
+    "dev": "nuxi dev"
   },
   "devDependencies": {
     "nuxt": "^3.13.2",
