@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "release-type": "node",
   "always-link-local": true,
-  "bootstrap-sha": "be90e3ec86b0782ed15d5ef1f103d0520bf6dea3",
+  "bootstrap-sha": "c5925cf33eee20db0f0a7ca4c4936c395e744e7b",
   "plugins": [
     {
       "type": "node-workspace"
