@@ -1,0 +1,8 @@
+pages/ignored.vue
+
+layouts/ignored.vue
+
+IgnoredComponent.vue
+
+extended-pages/IgnoredPage.vue
+extended-pages/IgnoredChildPage.vue

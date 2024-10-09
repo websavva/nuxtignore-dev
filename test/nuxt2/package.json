@@ -1,19 +1,20 @@
 {
-  "name": "test-nuxt3-basic",
+  "name": "test-nuxt2",
   "version": "0.0.1",
-  "private": true,
   "description": "",
+  "private": true,
   "engines": {
     "node": "20.x",
     "pnpm": "9.x"
   },
   "type": "module",
   "scripts": {
-    "prepare": "nuxi prepare",
-    "dev": "nuxi dev"
+    "test": "vitest run"
   },
   "devDependencies": {
-    "nuxt": "^3.13.2",
-    "nuxtignore-dev": "workspace:*"
+    "vitest": "^2.1.2",
+    "@nuxt/test-utils": "^0.2.2",
+    "ofetch": "^1.4.1",
+    "nuxt": "^2.18.1"
   }
 }
