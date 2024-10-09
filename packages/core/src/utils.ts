@@ -1,4 +1,4 @@
-import { isIgnored } from '@nuxt/kit';
+import { isIgnored, resolveAlias } from '@nuxt/kit';
 import type { NuxtPage as Nuxt3Page } from '@nuxt/schema';
 
 export interface Nuxt2Page {
@@ -12,7 +12,9 @@ export const findIgnoredPageIndex = <P extends NuxtPage>(pages: P[]) => {
   return pages.findIndex((page) => {
     const filePath = 'component' in page ? page.component : page.file;
 
-    return filePath && isIgnored(filePath);
+    if (!filePath) return false;
+
+    return isIgnored(resolveAlias(filePath));
   });
 };
 

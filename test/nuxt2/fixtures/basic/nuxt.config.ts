@@ -1,5 +1,3 @@
-import { resolve } from 'node:path';
-
 import type { NuxtConfig } from '@nuxt/types';
 
 export default {
@@ -14,20 +12,17 @@ export default {
       extendRoutes(routes) {
         routes.push(
           {
-            component: resolve(__dirname, './extended-pages/ActivePage.vue'),
+            component: '~/extended-pages/ActivePage.vue',
             path: '/extended/active',
             children: [
               {
-                component: resolve(
-                  __dirname,
-                  './extended-pages/IgnoredChildPage.vue',
-                ),
+                component: '~/extended-pages/IgnoredChildPage.vue',
                 path: '/extended/active/child',
               },
             ],
           },
           {
-            component: resolve(__dirname, './extended-pages/IgnoredPage.vue'),
+            component: '~/extended-pages/IgnoredPage.vue',
             path: '/extended/ignored',
           },
         );
