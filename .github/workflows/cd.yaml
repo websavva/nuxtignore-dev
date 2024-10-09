@@ -20,6 +20,10 @@ jobs:
         run: pnpm run build
         shell: bash
 
+      - name: Copy README.md
+        run: cp README.md packages/core
+        shell: bash
+
       - run: pnpm --filter="./packages/core" publish --access public --no-git-checks
         shell: bash
         env:
