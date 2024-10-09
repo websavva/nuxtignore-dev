@@ -1,6 +1,7 @@
 {
   "name": "nuxtignore-dev-module",
   "version": "0.0.1",
+  "private": true,
   "description": "Nuxt module for support of .nuxtignore.dev file",
   "keywords": [
     "nuxt",
