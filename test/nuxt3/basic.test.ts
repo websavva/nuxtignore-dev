@@ -60,4 +60,14 @@ describe('Basic project', () => {
       404,
     );
   });
+
+  it('should ignore middlewares', async () => {
+    expect(await $fetch('/with-active-middleware')).toContain(
+      '<h1>Was Active Middlewared Passed - true</h1>',
+    );
+    expect($fetch('/with-ignored-middleware')).rejects.toHaveProperty(
+      'data.statusCode',
+      500,
+    );
+  });
 });

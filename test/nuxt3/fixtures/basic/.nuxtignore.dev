@@ -10,3 +10,5 @@ utils/ignored-util.ts
 
 extended-pages/IgnoredPage.vue
 extended-pages/IgnoredChildPage.vue
+
+middleware/ignored.ts
