@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@nuxt/kit':
-        specifier: ^3.13.2
-        version: 3.13.2(magicast@0.3.5)(rollup@4.24.0)
       nuxt:
         specifier: ^3.13.2
         version: 3.13.2(@parcel/watcher@2.4.1)(@types/node@22.7.5)(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.24.0)(terser@5.34.1)(vite@5.4.8(@types/node@22.7.5)(terser@5.34.1))
