@@ -3,16 +3,10 @@ import { fileURLToPath } from 'node:url';
 import { expect, describe, it } from 'vitest';
 import { setup, $fetch } from '@nuxt/test-utils';
 
-await setup({
-  server: true,
-  browser: false,
-  rootDir: fileURLToPath(new URL('../fixtures/basic', import.meta.url)),
-  nuxtConfig: {
-    // @ts-expect-error
-    nuxtignoreDev: {
-      enabled: false,
-    },
-  },
+import { setupWithCustomOptions } from './utils';
+
+await setupWithCustomOptions({
+  enabled: false,
 });
 
 describe('Disable option', () => {
