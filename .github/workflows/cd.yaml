@@ -1,0 +1,26 @@
+name: Publish package to NPM Registry
+
+on:
+  release:
+    types: ['released']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare workflow
+        uses: ./.github/actions/prepare-workflow
+
+      - name: Run build
+        run: pnpm run build
+        shell: bash
+
+      - run: pnpm --filter="./packages/core" publish --access public --no-git-checks
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_GRANULAR_ACCESS_TOKEN }}

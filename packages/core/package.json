@@ -32,7 +32,6 @@
   "scripts": {
     "prepare": "nuxt-module-build prepare",
     "build": "pnpm run prepare && nuxt-module-build build",
-    "prepack": "pnpm run build",
     "dev:prepare": "nuxt-module-build build --stub && pnpm run prepare",
     "dev": "nuxi dev playground",
     "lint": "eslint .",

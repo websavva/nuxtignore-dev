@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "node",
+  "always-link-local": true,
+  "bootstrap-sha": "be90e3ec86b0782ed15d5ef1f103d0520bf6dea3",
+  "plugins": [
+    {
+      "type": "node-workspace"
+    }
+  ],
+  "packages": {
+    "packages/core": {
+      "package-name": "nuxtignore-dev"
+    }
+  }
+}

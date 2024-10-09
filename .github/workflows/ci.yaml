@@ -22,12 +22,15 @@ jobs:
 
       - name: Run build
         run: pnpm run build
+        shell: bash
 
       - name: Run test preparation
         run: pnpm run test:prepare
+        shell: bash
 
       - name: Run tests
         run: pnpm run test
+        shell: bash
 
   lint:
     name: Run linter
@@ -41,6 +44,7 @@ jobs:
 
       - name: Run linter
         run: pnpm run lint
+        shell: bash
 
   typecheck:
     name: Run typecheck
@@ -54,3 +58,4 @@ jobs:
 
       - name: Run typecheck
         run: pnpm run typecheck
+        shell: bash
