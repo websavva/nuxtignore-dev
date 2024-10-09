@@ -9,7 +9,7 @@
   },
   "type": "module",
   "scripts": {
-    "prepare": "nuxi prepare",
+    "dev:prepare": "nuxi prepare",
     "dev": "nuxi dev"
   },
   "devDependencies": {

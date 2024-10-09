@@ -9,10 +9,19 @@
   },
   "type": "module",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "vitest": "^2.1.2",
-    "@nuxt/test-utils": "^3.14.3"
+    "@nuxt/test-utils": "^3.14.3",
+    "eslint": "^8.57.0",
+    "eslint-config-custom-typescript": "workspace:*"
+  },
+  "dependenciesMeta": {
+    "eslint-config-custom-typescript": {
+      "injected": true
+    }
   }
 }

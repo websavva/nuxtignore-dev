@@ -9,7 +9,7 @@ test('Missing file in strict mode', async () => {
     server: true,
     rootDir: basicFixtureRootDir,
     nuxtConfig: {
-      // @ts-expect-error
+      // @ts-expect-error missing type
       nuxtignoreDev: {
         enabled: true,
         filePath: 'non-existing-file',

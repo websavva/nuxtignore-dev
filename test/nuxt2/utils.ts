@@ -17,7 +17,7 @@ export const loadConfig = () => {
   return import('./fixtures/basic/nuxt.config').then((m) => m.default);
 };
 
-export const setupTest = async (options: Record<string, any> = {}) => {
+export const setupTest = async (options: Record<string, unknown> = {}) => {
   const config = await loadConfig();
 
   return _setupTest({

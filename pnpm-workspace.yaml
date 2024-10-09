@@ -5,3 +5,4 @@ packages:
   - 'test/nuxt3/fixtures/*'
   - 'test/nuxt2'
   - 'test/nuxt2/fixtures/*'
+  - 'test/eslint-config-custom-typescript'

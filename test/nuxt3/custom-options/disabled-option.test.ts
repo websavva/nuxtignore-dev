@@ -1,7 +1,5 @@
-import { fileURLToPath } from 'node:url';
-
 import { expect, describe, it } from 'vitest';
-import { setup, $fetch } from '@nuxt/test-utils';
+import { $fetch } from '@nuxt/test-utils';
 
 import { setupWithCustomOptions } from './utils';
 

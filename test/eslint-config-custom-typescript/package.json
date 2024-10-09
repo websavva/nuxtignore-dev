@@ -1,0 +1,21 @@
+{
+  "name": "eslint-config-custom-typescript",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "main": "index.cjs",
+  "engines": {
+    "node": "20.x",
+    "pnpm": "9.x"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3"
+  },
+  "peerDependencies": {
+    "eslint": "^8.57.0"
+  }
+}

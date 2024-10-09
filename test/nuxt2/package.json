@@ -9,12 +9,24 @@
   },
   "type": "module",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
     "vitest": "^2.1.2",
     "@nuxt/test-utils": "^0.2.2",
     "ofetch": "^1.4.1",
-    "nuxt": "^2.18.1"
+    "nuxt": "^2.18.1",
+    "eslint": "^8.57.0",
+    "eslint-config-custom-typescript": "workspace:*"
+  },
+  "dependenciesMeta": {
+    "eslint-config-custom-typescript": {
+      "injected": true
+    }
+  },
+  "resolutions": {
+    "prettier": "^3.3.3"
   }
 }

@@ -1,5 +1,3 @@
-import { fileURLToPath } from 'node:url';
-
 import { expect, describe, it } from 'vitest';
 
 import { $fetch, setupTest } from './utils';
