@@ -4,7 +4,8 @@
   "description": "Nuxt module for support of .nuxtignore.dev file",
   "keywords": [
     "nuxt",
-    "module"
+    "module",
+    "nuxtignore"
   ],
   "repository": {
     "type": "git",
