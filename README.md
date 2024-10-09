@@ -43,10 +43,13 @@ It can also be useful to add `.nuxtignore.dev` to `.gitignore`.
     enabled: process.env.NODE_ENV === 'development',
 
     // custom path to a file or filename
-    filename: '/etc/.custom-nuxtignore'
+    filePath: '/etc/.custom-nuxtignore'
 
     // if set to true and the file is not found, error is thrown
     strict: false,
+
+    // if set to true, ignored patterns are applied to pages added by hook "pages:extend"
+    isPagesExtendHookIncluded: true,
   }
 }
 ```
