@@ -82,7 +82,7 @@ export default defineNuxtModule<ModuleOptions>({
             const extendedPages =
               originalExtendRoutes?.(pages, router) || pages;
 
-            if (extendedPages) removeIgnoredPages(extendedPages);
+            removeIgnoredPages(extendedPages);
 
             return extendedPages;
           };

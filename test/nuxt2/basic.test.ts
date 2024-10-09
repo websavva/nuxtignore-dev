@@ -46,4 +46,14 @@ describe('Basic project', () => {
       404,
     );
   });
+
+  it('should ignore middlewares', async () => {
+    expect(await $fetch('/with-active-middleware')).toContain(
+      '<h1>Was Active Middleware Activated - true</h1>',
+    );
+    expect($fetch('with-ignored-middleware')).rejects.toHaveProperty(
+      'statusCode',
+      500,
+    );
+  });
 });

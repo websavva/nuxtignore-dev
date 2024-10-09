@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "nuxt": "^3.13.2",
-    "nuxtignore-dev": "workspace:*"
+    "nuxtignore-dev": "workspace:*",
+    "@nuxt/kit": "^3.13.2"
   }
 }

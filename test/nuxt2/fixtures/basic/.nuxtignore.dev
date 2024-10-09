@@ -6,3 +6,5 @@ IgnoredComponent.vue
 
 extended-pages/IgnoredPage.vue
 extended-pages/IgnoredChildPage.vue
+
+middleware/ignored.js

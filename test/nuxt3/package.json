@@ -13,7 +13,6 @@
   },
   "devDependencies": {
     "vitest": "^2.1.2",
-    "@nuxt/test-utils": "^3.14.3",
-    "@nuxt/kit": "^3.13.2"
+    "@nuxt/test-utils": "^3.14.3"
   }
 }
