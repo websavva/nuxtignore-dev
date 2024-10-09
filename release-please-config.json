@@ -9,8 +9,6 @@
     }
   ],
   "packages": {
-    "packages/core": {
-      "package-name": "nuxtignore-dev"
-    }
+    "packages/core": {}
   }
 }
