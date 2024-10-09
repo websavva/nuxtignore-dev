@@ -20,6 +20,9 @@
   "type": "module",
   "scripts": {
     "dev:nuxt3": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=playground-nuxt3 dev",
-    "dev:nuxt2": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=playground-nuxt2 dev"
+    "dev:nuxt2": "pnpm --filter=nuxtignore-dev dev:prepare && pnpm --filter=playground-nuxt2 dev",
+    "build": "pnpm --filter=nuxtignore-dev build",
+    "test:prepare": "pnpm --filter='./test/**' prepare",
+    "test": "pnpm --filter='./test/**' test"
   }
 }
