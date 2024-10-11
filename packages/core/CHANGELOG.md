@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/websavva/nuxtignore-dev/compare/nuxtignore-dev-v0.2.0...nuxtignore-dev-v0.2.1) (2024-10-11)
+
+
+### Bug Fixes
+
+* README.md was moved into core folder while its symbolic link was created in the root ([cf2f64e](https://github.com/websavva/nuxtignore-dev/commit/cf2f64e4dd324880e06cff4b54383a96488b54fb))
+
 ## [0.2.0](https://github.com/websavva/nuxtignore-dev/compare/nuxtignore-dev-v0.1.0...nuxtignore-dev-v0.2.0) (2024-10-09)
 
 
