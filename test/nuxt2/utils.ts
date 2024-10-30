@@ -36,8 +36,6 @@ export const setupTest = async (
 
   const config = await loadConfig(rootDir);
 
-  debugger;
-
   return _setupTest({
     server: true,
     browser: false,
