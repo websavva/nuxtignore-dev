@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/websavva/nuxtignore-dev/compare/nuxtignore-dev-v0.2.1...nuxtignore-dev-v1.0.0) (2024-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* isIgnored is based upon ignore of the builder in Nuxt2
+
+### Bug Fixes
+
+* isIgnored is based upon ignore of the builder in Nuxt2 ([b99cd25](https://github.com/websavva/nuxtignore-dev/commit/b99cd257e7b6a93891e5bca88488ec54cbd12c02))
+
 ## [0.2.1](https://github.com/websavva/nuxtignore-dev/compare/nuxtignore-dev-v0.2.0...nuxtignore-dev-v0.2.1) (2024-10-11)
 
 
