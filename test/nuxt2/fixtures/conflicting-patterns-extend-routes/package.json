@@ -1,0 +1,21 @@
+{
+  "name": "test-nuxt2-conflicting-patterns-extend-routes",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "engines": {
+    "node": "20.x",
+    "pnpm": "9.x"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.18.1",
+    "nuxt": "^2.18.1",
+    "nuxtignore-dev": "workspace:*",
+    "@types/node": "^22.7.5"
+  }
+}

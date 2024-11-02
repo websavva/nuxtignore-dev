@@ -8,15 +8,17 @@ import {
   build,
 } from '@nuxt/test-utils';
 
-import { basicFixtureRootDir, loadConfig } from '../utils';
+import { loadConfig, FIXTURE_PATHS } from '../utils';
 
 test('Missing file in strict mode', async () => {
-  const baseConfig = await loadConfig();
+  const rootDir = FIXTURE_PATHS.basic;
+
+  const baseConfig = await loadConfig(rootDir);
 
   const ctx = createContext({
     browser: false,
     server: true,
-    rootDir: basicFixtureRootDir,
+    rootDir,
     configFile: '',
     config: {
       ...baseConfig,

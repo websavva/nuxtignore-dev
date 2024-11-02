@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 
 import { setupTest, $fetch } from '../utils';
 
-await setupTest({
+await setupTest('basic', {
   enabled: true,
   strict: true,
   isPagesExtendHookIncluded: false,

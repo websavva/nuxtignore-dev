@@ -1,0 +1,3 @@
+pages/*
+!pages/-active-pages
+!pages/-active-pages/*

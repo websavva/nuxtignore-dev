@@ -1,10 +1,10 @@
-import { join, isAbsolute } from 'node:path';
+import { join, isAbsolute, relative } from 'node:path';
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 
 import { defineNuxtModule, isNuxt2 } from '@nuxt/kit';
 
-import { type Nuxt2Page, removeIgnoredPages } from './utils';
+import { type Nuxt2Builder, type Nuxt2Page, removeIgnoredPages } from './utils';
 
 export interface ModuleOptions {
   filePath: string;
@@ -60,32 +60,47 @@ export default defineNuxtModule<ModuleOptions>({
 
     if (isPagesExtendHookIncluded) {
       if (isNuxt2()) {
-        // wrapping extendRoutes function in order to apply ignored patterns
-        // @ts-expect-error non-existring hooks for nuxt3
-        nuxt.hook('build:extendRoutes', () => {
-          const optionsWithRouter = nuxt.options as unknown as {
-            router?: {
-              extendRoutes: (
-                pages: Nuxt2Page[],
-                router: unknown,
-              ) => Nuxt2Page[] | undefined;
+        // @ts-expect-error non-existing hooks for nuxt3
+        nuxt.hook('builder:prepared', (builder: Nuxt2Builder) => {
+          const isIgnored = (pathname: string) => {
+            const relativePathname = relative(nuxt.options.rootDir, pathname);
+            if (
+              !relativePathname ||
+              (relativePathname[0] === '.' && relativePathname[1] === '.')
+            ) {
+              return false;
+            }
+
+            return builder.ignore.ignore.ignores(relativePathname);
+          };
+
+          // wrapping extendRoutes function in order to apply ignored patterns
+          // @ts-expect-error non-existing hooks for nuxt3
+          nuxt.hook('build:extendRoutes', () => {
+            const optionsWithRouter = nuxt.options as unknown as {
+              router?: {
+                extendRoutes: (
+                  pages: Nuxt2Page[],
+                  router: unknown,
+                ) => Nuxt2Page[] | undefined;
+              };
             };
-          };
 
-          const { extendRoutes: originalExtendRoutes } =
-            optionsWithRouter.router || {};
+            const { extendRoutes: originalExtendRoutes } =
+              optionsWithRouter.router || {};
 
-          optionsWithRouter.router!.extendRoutes = (
-            pages: Nuxt2Page[],
-            router: unknown,
-          ) => {
-            const extendedPages =
-              originalExtendRoutes?.(pages, router) || pages;
+            optionsWithRouter.router!.extendRoutes = (
+              pages: Nuxt2Page[],
+              router: unknown,
+            ) => {
+              const extendedPages =
+                originalExtendRoutes?.(pages, router) || pages;
 
-            removeIgnoredPages(extendedPages);
+              removeIgnoredPages(extendedPages, isIgnored);
 
-            return extendedPages;
-          };
+              return extendedPages;
+            };
+          });
         });
       } else {
         nuxt.hooks.afterEach(({ name, args }) => {

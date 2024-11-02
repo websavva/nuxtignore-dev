@@ -2,7 +2,7 @@ import { expect, describe, it } from 'vitest';
 
 import { $fetch, setupTest } from './utils';
 
-await setupTest();
+await setupTest('basic');
 
 describe('Basic project', () => {
   it('should ignore pages', async () => {
