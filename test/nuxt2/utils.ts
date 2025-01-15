@@ -43,7 +43,10 @@ export const setupTest = async (
     configFile: '',
     config: {
       ...config,
-      nuxtignoreDev: options,
+      nuxtignoreDev: {
+        isPagesExtendHookIncluded: true,
+        ...options,
+      },
     },
   });
 };

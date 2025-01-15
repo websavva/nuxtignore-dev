@@ -3,7 +3,14 @@ import { resolve } from 'node:path';
 import type { NuxtConfig } from '@nuxt/types';
 
 export default {
-  buildModules: ['nuxtignore-dev'],
+  buildModules: [
+    [
+      'nuxtignore-dev',
+      {
+        isPagesExtendHookIncluded: true,
+      },
+    ],
+  ],
 
   hooks: {
     build: {

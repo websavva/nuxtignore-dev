@@ -15,5 +15,6 @@ export const setupWithCustomOptions = (options: Record<string, unknown>) => {
       // @ts-expect-error missing type
       nuxtignoreDev: options,
     },
+    dev: true,
   });
 };
