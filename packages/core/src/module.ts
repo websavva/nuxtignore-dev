@@ -31,11 +31,7 @@ export default defineNuxtModule<ModuleOptions>({
     };
   },
 
-  async setup(options, nuxt) {
-    debugger;
-
-    const { filePath, strict, enabled, isPagesExtendHookIncluded } = options;
-
+  async setup({ filePath, strict, enabled, isPagesExtendHookIncluded }, nuxt) {
     if (!enabled) return;
 
     const absoluteNuxtignoreDevFilePath = isAbsolute(filePath)
