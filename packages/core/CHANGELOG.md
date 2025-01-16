@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/websavva/nuxtignore-dev/compare/nuxtignore-dev-v1.0.0...nuxtignore-dev-v2.0.0) (2025-01-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* .nuxtignore is not applied in extendPages hook
+
+### Bug Fixes
+
+* .nuxtignore is not applied in extendPages hook ([5b5b7bd](https://github.com/websavva/nuxtignore-dev/commit/5b5b7bd8acd4d9caf393043edd7e933aa6e5506a))
+
 ## [1.0.0](https://github.com/websavva/nuxtignore-dev/compare/nuxtignore-dev-v0.2.1...nuxtignore-dev-v1.0.0) (2024-11-02)
 
 
